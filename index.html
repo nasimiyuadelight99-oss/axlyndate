@@ -2,36 +2,63 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>AxlynDate</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Axlyndate - Meet Your Luxury Love</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;background:#000;font-family:system-ui;overflow:hidden}
-.hero{position:relative;width:100%;height:100vh;height:100dvh;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:1}
-.overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(to bottom,rgba(0,0,0,.55) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.78) 72%,rgba(0,0,0,.92) 100%)}
-.top{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(12px + env(safe-area-inset-top)) 16px 12px;color:#fff}
-.brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;flex-shrink:0}.logo{width:30px;height:30px;background:linear-gradient(135deg,#F1D9A5,#C9A86A);border-radius:7px;display:grid;place-items:center;color:#000;font-weight:900}
-.badge{flex-shrink:0;white-space:nowrap;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);padding:6px 12px;border-radius:20px;font-size:10.5px}
-.bottom{position:relative;z-index:3;padding:14px 16px calc(18px + env(safe-area-inset-bottom))}
-.kicker{color:#E8C99A;font-size:10px;letter-spacing:1.8px;font-weight:700;margin-bottom:8px}.bottom h1{color:#fff;font-size:29px;line-height:1.08;font-weight:800}
-.sub{color:rgba(255,255,255,.88);font-size:12.5px;margin:8px 0 14px;line-height:1.35}
-.btn{width:100%;height:44px;border-radius:24px;border:none;font-weight:800;font-size:13px}.btn+.btn{margin-top:10px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Plus Jakarta Sans',system-ui;background:#000;color:#fff;overflow-x:hidden}
+.hero{position:relative;height:100vh;height:100dvh;width:100%;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.15) 0%,rgba(0,0,0,.1) 40%,rgba(0,0,0,.75) 75%,rgba(0,0,0,.9) 100%);z-index:1}
+.top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:14px 16px;padding-top:calc(14px + env(safe-area-inset-top))}
+.brand{display:flex;align-items:center;gap:8px}
+.logo{width:32px;height:32px;background:#EBC99A;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:800;font-size:14px}
+.brand-name{font-weight:700;font-size:14px;letter-spacing:.02em}
+.badge{font-size:9px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.25);padding:5px 10px;border-radius:999px;letter-spacing:.04em}
+.content{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:0 20px 18px;padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+.kicker{color:#EBC99A;font-size:9px;letter-spacing:.18em;font-weight:700;margin-bottom:6px}
+h1{font-size:28px;line-height:.95;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.sub{color:rgba(255,255,255,.75);font-size:12px;margin-bottom:14px;line-height:1.4}
+.btn{width:100%;height:46px;border-radius:24px;border:none;font-weight:700;font-size:13px;margin-bottom:8px;cursor:pointer}
+.btn-google{background:#fff;color:#000}
+.btn-gold{background:linear-gradient(90deg,#EBC99A,#C5A680);color:#000}
+.btn-outline{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25)}
+.counter{position:absolute;top:calc(62px + env(safe-area-inset-top));right:12px;z-index:2;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.2);padding:6px 10px;border-radius:999px;font-size:10px}
+.modal{display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);align-items:flex-end}
+.modal.open{display:flex}
+.sheet{width:100%;background:#111;border-radius:28px 28px 0 0;padding:24px;border-top:1px solid rgba(255,255,255,.1);animation:slide .3s ease}
+@keyframes slide{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.sheet h2{font-size:20px;margin-bottom:6px}
+.sheet p{color:rgba(255,255,255,.6);font-size:12px;margin-bottom:16px}
+.input{width:100%;height:46px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;color:#fff;padding:0 14px;margin-bottom:10px;font-size:14px}
+.input::placeholder{color:rgba(255,255,255,.4)}
+.close{width:100%;height:46px;background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);border-radius:24px;margin-top:8px;font-weight:600}
 </style>
 </head>
 <body>
 <div class="hero">
-<img src="hero.jpg?v=19" alt="Luxury">
+<img src="hero.jpg" alt="Luxury">
 <div class="overlay"></div>
-<div class="top"><div class="brand"><div class="logo">AX</div> axlyndate</div><div class="badge">2,847 couples matched</div></div>
-<div class="bottom">
+<div class="counter">2,147 couples matched</div>
+<div class="top"><div class="brand"><div class="logo">AX</div><div class="brand-name">axlyndate</div></div><div class="badge">Navy & Rose Gold AX Brand</div></div>
+<div class="content">
 <div class="kicker">✓ VERIFIED • ELEGANT • REAL CONNECTIONS</div>
 <h1>Meet Your<br>Luxury Love</h1>
 <div class="sub">Where ambitious minds meet elegant hearts</div>
-<button class="btn" style="background:#fff">Continue with Google</button>
-<button class="btn" style="background:linear-gradient(90deg,#E8C99A,#C9A86A)">Find Your Match →</button>
-<button class="btn" style="background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.65)">Login</button>
+<button class="btn btn-google" onclick="openModal('google')">Continue with Google</button>
+<button class="btn btn-gold" onclick="openModal('match')">Find Your Match →</button>
+<button class="btn btn-outline" onclick="openModal('login')">Login</button>
 </div>
 </div>
+
+<div id="loginModal" class="modal" onclick="closeModal('loginModal')"><div class="sheet" onclick="event.stopPropagation()"><h2>Welcome back</h2><p>Login to Axlyndate premium</p><input class="input" placeholder="Email address"><input class="input" type="password" placeholder="Password"><button class="btn btn-gold" onclick="alert('Login successful! Redirecting...'); closeModal('loginModal')">Login</button><button class="close" onclick="closeModal('loginModal')">Cancel</button></div></div>
+<div id="matchModal" class="modal" onclick="closeModal('matchModal')"><div class="sheet" onclick="event.stopPropagation()"><h2>Find Your Match</h2><p>3 quick questions to find your luxury partner</p><input class="input" placeholder="What are you looking for?"><input class="input" placeholder="Your city"><button class="btn btn-gold" onclick="alert('Matching you with 2,147 verified members...'); closeModal('matchModal')">Start Matching →</button><button class="close" onclick="closeModal('matchModal')">Maybe later</button></div></div>
+<div id="googleModal" class="modal" onclick="closeModal('googleModal')"><div class="sheet" onclick="event.stopPropagation()"><h2>Continue with Google</h2><p>Secure sign-in via Google OAuth</p><button class="btn btn-google" onclick="alert('Google OAuth would open here. Connect Firebase/Google auth.'); closeModal('googleModal')">Sign in with Google</button><button class="close" onclick="closeModal('googleModal')">Cancel</button></div></div>
+
+<script>
+function openModal(type){document.getElementById(type+'Modal').classList.add('open')}
+function closeModal(id){document.getElementById(id).classList.remove('open')}
+</script>
 </body>
 </html>
