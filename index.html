@@ -9,45 +9,59 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Plus Jakarta Sans',system-ui;background:#000;color:#fff}
 .hero{position:relative;height:100vh;height:100dvh;width:100%;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;pointer-events:none}
-.overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.15) 0%,rgba(0,0,0,.1) 40%,rgba(0,0,0,.75) 75%,rgba(0,0,0,.9) 100%);z-index:1;pointer-events:none}
-.top{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:14px 16px;padding-top:calc(14px + env(safe-area-inset-top))}
-.brand{display:flex;align-items:center;gap:8px}
-.logo{width:32px;height:32px;background:#EBC99A;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:800;font-size:14px}
-.brand-name{font-weight:700;font-size:14px}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;pointer-events:none;z-index:0}
+.overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.95));z-index:1;pointer-events:none}
+.top{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:16px}
+.logo{width:32px;height:32px;background:#EBC99A;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:800}
 .badge{font-size:9px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.25);padding:5px 10px;border-radius:999px}
-.content{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:0 20px 18px;padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+.content{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:20px;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
 .kicker{color:#EBC99A;font-size:9px;letter-spacing:.18em;font-weight:700;margin-bottom:6px}
 h1{font-size:28px;line-height:.95;font-weight:800;margin-bottom:6px}
 .sub{color:rgba(255,255,255,.75);font-size:12px;margin-bottom:14px}
-.btn{width:100%;height:46px;border-radius:24px;border:none;font-weight:700;font-size:13px;margin-bottom:8px;cursor:pointer;position:relative;z-index:10}
+.btn{width:100%;height:46px;border-radius:24px;border:none;font-weight:700;font-size:13px;margin-bottom:8px;cursor:pointer;position:relative;z-index:10;pointer-events:auto}
 .btn-google{background:#fff;color:#000}
 .btn-gold{background:linear-gradient(90deg,#EBC99A,#C5A680);color:#000}
 .btn-outline{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25)}
-.counter{position:absolute;top:62px;right:12px;z-index:3;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.2);padding:6px 10px;border-radius:999px;font-size:10px}
-.modal{display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);align-items:flex-end}
+.modal{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);align-items:flex-end}
 .modal.open{display:flex}
-.sheet{width:100%;background:#111;border-radius:28px 28px 0 0;padding:24px;border-top:1px solid rgba(255,255,255,.1)}
+.sheet{width:100%;background:#151515;border-radius:28px 28px 0 0;padding:24px;border-top:1px solid rgba(255,255,255,.1)}
 .sheet h2{font-size:20px;margin-bottom:6px}
 .sheet p{color:rgba(255,255,255,.6);font-size:12px;margin-bottom:16px}
-.input{width:100%;height:46px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;color:#fff;padding:0 14px;margin-bottom:10px;font-size:14px}
-.close{width:100%;height:46px;background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);border-radius:24px;margin-top:8px;font-weight:600}
+.input{width:100%;height:46px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;color:#fff;padding:0 14px;margin-bottom:10px}
+.close{width:100%;height:46px;background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);border-radius:24px;margin-top:8px}
 </style>
 </head>
 <body>
 <div class="hero">
-<img src="hero.jpg" alt="Luxury">
+<img class="hero-bg" src="hero.jpg" alt="">
 <div class="overlay"></div>
-<div class="counter">2,147 couples matched</div>
-<div class="top"><div class="brand"><div class="logo">AX</div><div class="brand-name">axlyndate</div></div><div class="badge">Navy & Rose Gold AX Brand</div></div>
+<div class="top"><div style="display:flex;gap:8px;align-items:center"><div class="logo">AX</div><b style="font-size:14px">axlyndate</b></div><div class="badge">Navy & Rose Gold AX Brand</div></div>
 <div class="content">
-<div class="kicker">✓ VERIFIED • ELEGANT • REAL CONNECTIONS</div>
+<div class="kicker">✓ VERIFIED • ELEGANT • REAL</div>
 <h1>Meet Your<br>Luxury Love</h1>
 <div class="sub">Where ambitious minds meet elegant hearts</div>
-<button class="btn btn-google" onclick="openModal('google')">Continue with Google</button>
-<button class="btn btn-gold" onclick="openModal('match')">Find Your Match →</button>
-<button class="btn btn-outline" onclick="openModal('login')">Login</button>
+<button class="btn btn-google" id="btnGoogle">Continue with Google</button>
+<button class="btn btn-gold" id="btnMatch">Find Your Match →</button>
+<button class="btn btn-outline" id="btnLogin">Login</button>
 </div>
 </div>
-<div id="loginModal" class="modal" onclick="closeModal('loginModal')"><div class="sheet" onclick="event.stopPropagation()"><h2>Welcome back</h2><p>Login to Axlyndate premium</p><input class="input" placeholder="Email"><input class="input" type="password" placeholder="Password"><button class="btn btn-gold" onclick="alert('Login successful!');closeModal('loginModal')">Login</button><button class="close" onclick="closeModal('loginModal')">Cancel</button></div></div>
-<div id="matchModal" class="modal" onclick="closeModal('matchModal')"><div class="sheet" onclick="event.stopPropagation()"><h2>Find Your Match</h2><p>3 quick questions</p><input class="input" placeholder="Looking for?"><input class="input" placeholder="Your city"><button class="btn btn-gold" onclick="alert
+<div id="loginModal" class="modal"><div class="sheet"><h2>Welcome back</h2><p>Login to Axlyndate premium</p><input class="input" placeholder="Email"><input class="input" type="password" placeholder="Password"><button class="btn btn-gold" id="doLogin">Login →</button><button class="close" id="closeLogin">Cancel</button></div></div>
+<div id="matchModal" class="modal"><div class="sheet"><h2>Find Your Match</h2><p>3 quick questions</p><input class="input" placeholder="Looking for?"><button class="btn btn-gold" id="doMatch">Start Matching →</button><button class="close" id="closeMatch">Maybe later</button></div></div>
+<div id="googleModal" class="modal"><div class="sheet"><h2>Continue with Google</h2><p>Secure sign-in</p><button class="btn btn-google" id="doGoogle">Sign in with Google</button><button class="close" id="closeGoogle">Cancel</button></div></div>
+<script>
+const $=id=>document.getElementById(id);
+function openM(id){$(id).classList.add('open')}
+function closeM(id){$(id).classList.remove('open')}
+$('btnLogin').addEventListener('click',()=>openM('loginModal'));
+$('btnMatch').addEventListener('click',()=>openM('matchModal'));
+$('btnGoogle').addEventListener('click',()=>openM('googleModal'));
+$('closeLogin').addEventListener('click',()=>closeM('loginModal'));
+$('closeMatch').addEventListener('click',()=>closeM('matchModal'));
+$('closeGoogle').addEventListener('click',()=>closeM('googleModal'));
+$('doLogin').addEventListener('click',()=>{alert('Welcome to Axlyndate! Logged in successfully');closeM('loginModal')});
+$('doMatch').addEventListener('click',()=>{alert('Finding your luxury matches...');closeM('matchModal')});
+$('doGoogle').addEventListener('click',()=>{alert('Google sign-in would open here');closeM('googleModal')});
+document.querySelectorAll('.modal').forEach(m=>{m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')})});
+</script>
+</body>
+</html>
